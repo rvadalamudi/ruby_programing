@@ -1,2 +1,1 @@
-This is a test text file.
-Adding a new line
+I am Rajeev Vadal and this is my attempt to learn Ruby
