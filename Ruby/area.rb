@@ -1,10 +1,12 @@
 class Crect 
+    $global = "This is a global variable"
 	def initialize(width,height)
 		@width = width
 		@height = height
 	end
 
 	def area
+		puts "#{$global}"
 		return (@width * @height)
 	end
 end
