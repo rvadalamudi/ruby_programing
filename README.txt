@@ -1,1 +1,1 @@
-I am Rajeev Vadal and this is my attempt to learn Ruby
+I am Rajeev Vadal Krish and this is my attempt to learn Ruby
