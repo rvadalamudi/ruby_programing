@@ -5,15 +5,19 @@ class BookInStock
 		@isbn = isbn
 		@price = Float(price)
 	end
+
+	def price_in_cents()
+		Integer(price * 100 + 0.5)
+	end
+
+	def price_ins=(price)
+		@price = price/100.00
+	end
 end
 
-book1 = BookInStock.new("isbn1",13)
-book2 = BookInStock.new("isbn2",50)
-puts "#{book1.isbn}"
-puts "#{book1.price}"
-puts "#{book2.isbn}"
-puts "#{book2.price}"
-book1.price = book1.price * 0.75
-book2.price = book2.price * 0.50
-puts "#{book1.price}"
-puts "#{book2.price}"
+book = BookInStock.new("isbn1", 34.54)
+puts "#{book.price}"
+puts "#{book.isbn}"
+puts "#{book.price_in_cents}"
+book.price_ins = 1234
+puts "#{book.price}"
