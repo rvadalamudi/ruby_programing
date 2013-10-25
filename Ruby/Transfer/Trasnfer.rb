@@ -1,9 +1,4 @@
-class Account
-	attr_accessor :balance
-	def initialize(balance)
-		@balance = balance
-	end
-end
+require_relative 'Account'
 
 class Transaction
     attr_reader :sav_acc, :chk_acc
@@ -35,7 +30,7 @@ puts "Savings = #{saving.balance}"
 puts "Checking = #{checking.balance}"
 
 trans = Transaction.new(saving,checking)
-trans.trasfer(checking,saving,180)
+trans.trasfer(checking,saving,150)
 puts "After transaction : "
 puts "Saving = #{saving.balance}"
 puts "Checking = #{checking.balance}"
