@@ -6,6 +6,6 @@ def length_finder(input_array)
 	return result 
 end
 
-array = ["Ruby", "Rails", "Perl", "C++", "Rspec"]
+array = %w[Ruby Perl C++ Unix Oracle Java]
 op = length_finder(array)
 puts "#{op}"
