@@ -6,7 +6,7 @@ class TestWordLength < Test::Unit::TestCase
 		assert_equal([], length_finder([]))
 	end
 
-	def test_sting_with_length_4
+	def test_string_with_length_4
 		assert_equal([4], length_finder(["java"]))
 	end
 
