@@ -5,7 +5,7 @@ class Cpoly
 		@height = height
 	end
 
-	def area()
+	def area
 		@width * @height
 	end
 
@@ -15,7 +15,7 @@ puts "enter the sides of the poly : "
 arr = gets.chomp
 (a,b) = arr.split("")
 triangle = Cpoly.new(a.to_i, b.to_i)
-puts "#{triangle.width} * #{triangle.height} = #{triangle.area}"
+puts "#{triangle.area}"
 
-triangle.height = 7
-puts "#{triangle.width} * #{triangle.height} = #{triangle.area}"
+#triangle.height = 7
+#puts "#{triangle.width} * #{triangle.height} = #{triangle.area}"
