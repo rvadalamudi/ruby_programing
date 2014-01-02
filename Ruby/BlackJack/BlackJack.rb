@@ -7,7 +7,7 @@ player = Player.deal
 dealer = Dealer.deal
 
 puts "#{player} are #{player_name} cards"
-puts "#{dealer} are dealers cards"
+puts "#{dealer[0]} is dealers 1st card"
 
 player_count = player.inject {|sum,card| sum+card}
 dealer_count = dealer.inject {|sum,card| sum+card}
@@ -44,6 +44,10 @@ elsif player_count == dealer_count
 	puts "Its a Tie!!!"
 	puts "#{player_name} count is #{player_count}"
 	puts "Dealer count is #{dealer_count}"		
+elsif dealer_count > 21
+	puts "Dealer Busted!!! #{player_name} wins"
+	puts "#{player_name} count is #{player_count}"
+	puts "Dealer count is #{dealer_count}"	
 else
 	puts "Dealer wins"
 	puts "#{player_name} count is #{player_count}"
