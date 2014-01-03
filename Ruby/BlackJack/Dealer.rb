@@ -2,17 +2,16 @@ class Dealer
 	attr_accessor :result
 	def self.deal
 		@result = []
-		@@deck = [5,6,7,8,9,10]
-		2.times {@result << @@deck[rand(6)]}
+		@@deck = Hash[1,1,2,2,3,3,4,4,5,5,6,6,7,7,8,8,9,9,10,10,"J",10,"Q",10,"K",10,"A",11]
+		@card = @@deck.keys
+		2.times {@result << @card[rand(14)]}
 		@result 
 	end
-=begin
-	def self.hit
-		@result << @@deck[rand(10)]
-	end
 
-	def self.stop
-		nil
-	end
-=end	
+	def self.count
+		@value = []
+		@value << @@deck[@result[0]]
+		@value << @@deck[@result[1]]
+        @value.inject {|sum,v| sum+v}
+   end
 end

@@ -9,8 +9,8 @@ dealer = Dealer.deal
 puts "#{player} are #{player_name} cards"
 puts "#{dealer[0]} is dealers 1st card"
 
-player_count = player.inject {|sum,card| sum+card}
-dealer_count = dealer.inject {|sum,card| sum+card}
+dealer_count = Dealer.count
+player_count = Player.count
 
 while player_count < 21 
 puts "#{player_name} do you wanna Hit or Stop ?"
@@ -21,8 +21,8 @@ if choice == 1
 		player = Player.hit
 		puts "#{player} are #{player_name} cards"
  #       puts "#{dealer} are dealers cards"
-        player_count = player.inject {|sum,card| sum+card}
-        dealer_count = dealer.inject {|sum,card| sum+card}
+        player_count = Player.count
+        dealer_count = Dealer.count
 	else 
 		break
 	end
