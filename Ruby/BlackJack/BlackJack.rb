@@ -48,6 +48,11 @@ elsif dealer_count > 21
 	puts "Dealer Busted!!! #{player_name} wins"
 	puts "#{player_name} count is #{player_count}"
 	puts "Dealer count is #{dealer_count}"	
+elsif dealer_count == 21
+	puts "Dealer Wins. BlackJack!!!!"
+	puts "#{player_name} count is #{player_count}"
+	puts "Dealer count is #{dealer_count}"
+		
 else
 	puts "Dealer wins"
 	puts "#{player_name} count is #{player_count}"
