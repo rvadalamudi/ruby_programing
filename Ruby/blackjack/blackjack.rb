@@ -16,6 +16,11 @@ puts "Dealing cards to players..."
 for i in (0..no_of_players-1)
 	p[i].deal
 	puts "#{p[i].player[:name]} has cards #{p[i].player[:cards]}" 
+	if p[i].player[:cards].include? "A"
+		p[i].player[:ace] = 1
+	else
+		nil
+	end
 end
 
 d = Dealer.new("dealer")
@@ -33,18 +38,26 @@ no_of_players_busted = 0
 # Code for Hit or Stop and checks weather count >= 21
 for i in (0..no_of_players-1) do 
 	while p[i].player[:value] < 21
-			puts "#{p[i].player[:name]} do you want to Hit or Stop. Enter 1 for Hit and 2 to Stop"
+			puts "#{p[i].player[:name]} do you want to Hit or Stand. Enter 1 for Hit and 2 to Stand"
 			choice = Integer(gets.chomp)
 
 	    if choice == 1
 		    p[i].hit 
 		    puts "#{p[i].player[:name]} cards are #{p[i].player[:cards]} cards"
+		    if p[i].player[:cards].include? "A"
+		       p[i].player[:ace] = 1
+	        else
+		       nil
+	        end
             p[i].count
             if p[i].player[:value] == 21
             	p[i].player[:status] = 2
-            elsif p[i].player[:value] > 21
+            elsif p[i].player[:value] > 21 && p[i].player[:ace] == 0
             	p[i].player[:status] = 1
             	no_of_players_busted += 1 
+            elsif p[i].player[:value] > 21 && p[i].player[:ace] == 1
+            	p[i].player[:value] -= 10
+            	p[i].player[:ace] = 0
             else
             	nil
             end 		
@@ -63,19 +76,19 @@ end
 
 for i in (0..no_of_players-1) do 
 	if p[i].player[:status] == 1 
-		puts "#{p[i].player[:name]} is Busted!!! Dealer Wins!!!!"
+		puts "#{p[i].player[:name]} is Busted!!! Dealer Wins!!!! #{p[i].player[:value]}"
 	elsif p[i].player[:status] == 2
-		puts "#{p[i].player[:name]} hits a BlackJack. Congratulations!!!!."
+		puts "#{p[i].player[:name]} hits a BlackJack. Congratulations!!!! #{p[i].player[:value]}"
 	elsif p[i].player[:value] > d.player[:value]
-		puts "#{p[i].player[:name]} wins!!!!"
+		puts "#{p[i].player[:name]} wins!!!! #{p[i].player[:value]}"
 	elsif p[i].player[:value] == d.player[:value]
-		puts "Its a Tie!!!"
+		puts "Its a Tie!!! #{p[i].player[:value]}"
 	elsif d.player[:value] > 21 
-		puts "Dealer Busted!!! #{p[i].player[:name]} wins"
+		puts "Dealer Busted!!! #{p[i].player[:name]} wins #{p[i].player[:value]}"
 	elsif d.player[:value] == 21
-		puts "Dealer hits BlackJack. #{p[i].player[:name]} looses."		
+		puts "Dealer hits BlackJack. #{p[i].player[:name]} looses. #{p[i].player[:value]}"		
 	else
-		puts "Dealer Wins. #{p[i].player[:name]} looses."
+		puts "Dealer Wins. #{p[i].player[:name]} looses. #{p[i].player[:value]}"
 	end
 end
 

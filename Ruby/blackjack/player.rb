@@ -4,7 +4,7 @@
  class Player
  	attr_reader :player
  	def initialize(str)
- 		@player = Hash[:name,str,:status,0,:cards,[],:value,0,:bet,0,:tot_bet,0] #status 0 = Normal, 1 = Busted , 2 = BlackJack
+ 		@player = Hash[:name,str,:status,0,:cards,[],:value,0,:bet,0,:tot_bet,0,:ace,0] #status 0 = Normal, 1 = Busted , 2 = BlackJack
  	end
 
     def deal
