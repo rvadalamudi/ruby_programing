@@ -18,6 +18,11 @@ for i in (0..no_of_players-1)
 	puts "#{p[i].player[:name]} has cards #{p[i].player[:cards]}" 
 	if p[i].player[:cards].include? "A"
 		p[i].player[:ace] = 1
+		if p[i].count == 21
+			p[i].player[:status] = 2
+		else
+			nil
+		end
 	else
 		nil
 	end
@@ -45,7 +50,7 @@ for i in (0..no_of_players-1) do
 		    p[i].hit 
 		    puts "#{p[i].player[:name]} cards are #{p[i].player[:cards]} cards"
 		    if p[i].player[:cards].include? "A"
-		       p[i].player[:ace] = 1
+		       p[i].player[:ace] += 1
 	        else
 		       nil
 	        end
@@ -55,9 +60,9 @@ for i in (0..no_of_players-1) do
             elsif p[i].player[:value] > 21 && p[i].player[:ace] == 0
             	p[i].player[:status] = 1
             	no_of_players_busted += 1 
-            elsif p[i].player[:value] > 21 && p[i].player[:ace] == 1
+            elsif p[i].player[:value] > 21 && p[i].player[:ace] >= 1
             	p[i].player[:value] -= 10
-            	p[i].player[:ace] = 0
+            	p[i].player[:ace] -= 1
             else
             	nil
             end 		
@@ -67,7 +72,9 @@ for i in (0..no_of_players-1) do
 	end
 end
 
-while  d.player[:value] < 17 && no_of_players_busted < no_of_players
+d.count
+while  d.player[:value] < 17 
+	#&& no_of_players_busted < no_of_players
 	d.hit
 	d.count 
 end
@@ -83,6 +90,8 @@ for i in (0..no_of_players-1) do
 		puts "#{p[i].player[:name]} wins!!!! #{p[i].player[:value]}"
 	elsif p[i].player[:value] == d.player[:value]
 		puts "Its a Tie!!! #{p[i].player[:value]}"
+	elsif p[i].player[:value] == d.player[:value] && p[i].player[:value] > 21
+			puts "Dealer wins as both get Busted"
 	elsif d.player[:value] > 21 
 		puts "Dealer Busted!!! #{p[i].player[:name]} wins #{p[i].player[:value]}"
 	elsif d.player[:value] == 21
