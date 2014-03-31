@@ -1,0 +1,16 @@
+h1,h2 {
+	color: green;
+	font-family: Times;
+	font-size: 25px;
+}
+
+p {
+	color: blue;
+	font-size: 20px;
+	font-family: Arial;
+}
+
+.Raj {
+	color: red;
+	font-size: 15px; 
+}
